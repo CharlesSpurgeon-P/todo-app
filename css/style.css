@@ -1,0 +1,182 @@
+/* ---------- RESET ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- THEMES ---------- */
+body.light {
+  --bg:#f5f7fb; --card:#fff; --text:#222; --accent:#6c63ff;
+  --task1:#fef6e4; --task2:#e7f5ff; --task3:#f3e8ff;
+}
+body.dark {
+  --bg:#121212; --card:#1e1e1e; --text:#f1f1f1; --accent:#bb86fc;
+  --task1:#2a2a2a; --task2:#2f2f2f; --task3:#343434;
+}
+body.lavender {
+  --bg:#f4f1ff; --card:#fff; --text:#2a2356; --accent:#7b6cff;
+  --task1:#ece9ff; --task2:#e0dbff; --task3:#d6d0ff;
+}
+body.mint {
+  --bg:#f1fff9; --card:#fff; --text:#0f3d2e; --accent:#2ec4b6;
+  --task1:#e8fff7; --task2:#d7fdf1; --task3:#c8f9ea;
+}
+
+/* ---------- PAGE ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: var(--card);
+  padding: 15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo { font-weight:bold; font-size:1.2rem; cursor:pointer; }
+.header-right { display:flex; gap:10px; }
+
+main { flex:1; padding:30px 20px; }
+
+.footer {
+  background: var(--card);
+  padding:15px;
+  text-align:center;
+}
+
+/* ---------- COMMON ---------- */
+button {
+  padding:8px 16px;
+  border:none;
+  border-radius:8px;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+}
+
+select {
+  padding:6px;
+  border-radius:6px;
+}
+
+/* ---------- CARD ---------- */
+.todo-card {
+  background:var(--card);
+  max-width:650px;
+  margin:auto;
+  padding:25px;
+  border-radius:16px;
+}
+
+/* ---------- DAYS ---------- */
+.days {
+  display:flex;
+  gap:8px;
+  margin:15px 0;
+}
+.day {
+  flex:1;
+  padding:8px 0;
+  text-align:center;
+  border-radius:10px;
+  cursor:pointer;
+  background:rgba(0,0,0,0.05);
+  transition:.2s;
+}
+.day:hover { transform: translateY(-2px); }
+.day.active {
+  background:var(--accent);
+  color:white;
+  box-shadow:0 0 10px rgba(0,0,0,0.25);
+}
+
+/* ---------- INPUT ---------- */
+.todo-card input,
+.todo-card textarea {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+/* ---------- TOP ROW ---------- */
+.top-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:10px 0 20px;
+}
+.counters {
+  display:flex;
+  gap:12px;
+  font-size:0.9rem;
+}
+.counters span {
+  padding:6px 12px;
+  border-radius:20px;
+  background:rgba(0,0,0,0.08);
+}
+
+/* ---------- TASK LIST ---------- */
+.task-list {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* ---------- TASK ---------- */
+.task {
+  padding:16px;
+  border-radius:14px;
+  background:var(--task1);
+  position:relative;
+  transition:.2s;
+}
+.task:hover {
+  transform: translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+.task.in-progress { background:var(--task2); }
+.task.completed { background:var(--task3); }
+
+/* status strip */
+.task::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:6px;
+  border-radius:14px 0 0 14px;
+  background:#aaa;
+}
+.task.in-progress::before { background:orange; }
+.task.completed::before { background:green; }
+
+/* ---------- TASK CONTENT ---------- */
+.task-header {
+  display:flex;
+  justify-content:space-between;
+}
+.task-title { font-weight:bold; }
+.task-desc {
+  margin:8px 0;
+  font-size:0.9rem;
+  opacity:.85;
+}
+.task-actions { display:flex; gap:6px; }
+
+/* ---------- EMPTY ---------- */
+.empty {
+  text-align:center;
+  opacity:.7;
+  margin-top:20px;
+}
